@@ -1,5 +1,5 @@
 module "autoscaling_github_runners" {
-  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners?ref=v1.0.1"
+  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners?ref=v1.2.0"
 
   cicd_artifacts_bucket_name    = aws_s3_bucket.cicd.bucket
   cicd_artifacts_bucket_key_arn = aws_kms_key.cicd.arn
@@ -12,15 +12,14 @@ module "autoscaling_github_runners" {
     aws_iam_policy.administer_candidates.arn
   ]
 
-  ec2_imagebuilder_image_arn          = module.imagebuilder_github_runner_ami.imagebuilder_image_arn_xxx
-  ec2_maximum_concurrent_github_jobs  = 2
-  ec2_nightly_shutdown_enabled        = true
-  ec2_nightly_shutdown_scale_in_time  = "0 18 * * *"
-  ec2_nightly_shutdown_scale_out_time = "0 7 * * MON-FRI"
-  ec2_runner_role_tag                 = "TechTest GitHub Actions jobs"
-  ec2_spot_instances_max_price        = 0.5
-  ec2_spot_instances_preferred        = true
-  ec2_subnet_ids                      = module.vpc.private_subnets
+  ec2_imagebuilder_image_arn         = module.imagebuilder_github_runner_ami.imagebuilder_image_arn_xxx
+  ec2_maximum_concurrent_github_jobs = 2
+  ec2_nightly_shutdown_enabled       = true
+  ec2_nightly_shutdown_scale_in_time = "0 18 * * *"
+  ec2_runner_role_tag                = "TechTest GitHub Actions jobs"
+  ec2_spot_instances_max_price       = 0.5
+  ec2_spot_instances_preferred       = true
+  ec2_subnet_ids                     = module.vpc.private_subnets
 
   ec2_terraform_deployment_roles = [
     local.identifiers.account_deployer_role_arn,

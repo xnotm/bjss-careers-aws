@@ -1,12 +1,12 @@
 module "imagebuilder_github_runner_ami" {
-  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners//modules/imagebuilder-github-runner-ami?ref=v1.0.1"
+  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners//modules/imagebuilder-github-runner-ami?ref=v1.2.0"
 
   ami_build_pipeline_cron_expression = "0 4 ? * MON *"
   ami_version_number                 = "1.0.0"
 
   github_job_image_ecr_account_id       = var.aws_account_id
   github_job_image_ecr_repository_names = ["${aws_ecr_repository.terraform.name}:latest"]
-  github_runner_binary_version          = "2.307.1"
+  github_runner_binary_version          = "2.308.0"
 
   imagebuilder_ec2_encryption                = "CMK"
   imagebuilder_ec2_instance_type             = "t3a.large"

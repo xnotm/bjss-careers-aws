@@ -1,5 +1,5 @@
 module "imagebuilder_terraform_container" {
-  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners//modules/imagebuilder-terraform-container?ref=v1.0.1"
+  source = "git::https://github.com/mtonxbjss/terraform-aws-autoscaling-github-runners//modules/imagebuilder-terraform-container?ref=v1.2.0"
 
   container_build_pipeline_cron_expression = "0 4 ? * MON *"
   container_version_number                 = "1.0.0"
